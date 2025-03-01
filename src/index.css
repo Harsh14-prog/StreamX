@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+
+::-webkit-scrollbar{
+    width : 9px;
+    height : 9px ;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1f1e24;
+    border-radius: 8px;
+    border: 2px solid #2c2b32;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #6556CD;
+    border-radius: 8px;
+    border: 2px solid #2c2b32;
+}
+
+/* Base styling for the select element */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #27272a;
+    flex: 1;
+    padding: 0 0.5em;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: sans-serif;
+    height: 100%;
+}
+
+/* Hide the default dropdown icon in IE */
+select::ms-expand {
+    display: none;
+}
+
+/* Wrapper for the custom select styling */
+.select {
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 3em;
+    line-height: 3;
+    background: #27272a;
+    overflow: hidden;
+    border-radius: 0.25em;
+}
+
+/* Custom dropdown arrow */
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.1em;
+    background: #27272a;
+    color: #fff; /* Default arrow color */
+    cursor: pointer;
+    pointer-events: none;
+    transition: 0.25s all ease;
+}
+
+/* Hover effect for the arrow */
+.select:hover::after {
+    color: #6556CD; /* Change color on hover */
+}
+
+/* Attempt to style options (Note: Limited browser support for option hover) */
+select option {
+    background-color: #27272a; /* Default option background */
+    color: #fff; /* Default option text color */
+    padding: 0.5em;
+}
+
+/* For browsers supporting option hover */
+select option:hover {
+    background-color: white; /* White background on hover */
+    color: black; /* Text color for readability */
+}
