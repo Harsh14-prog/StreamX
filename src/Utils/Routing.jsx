@@ -2,6 +2,10 @@ import React from 'react'
 import { createBrowserRouter , RouterProvider } from 'react-router-dom'
 import Trending from '../components/Trending'
 import Home from '../components/Home'
+import Popular from '../components/Popular'
+import Movies from '../components/Movies'
+import People from '../components/People'
+import TvShows from '../components/TvShows'
 
 const Routing = () => {
 
@@ -14,28 +18,35 @@ const Routing = () => {
 
      {
         path : "/trending" ,
-        element : <Trending/>
+        element : <Trending/>,
+      
      },
 
      {
-        path : "/popular" ,
-        element : <Trending/>
+      path : "/popular" ,
+      element : <Popular/>,
+    
      },
 
-     {
-        path : "/movie" ,
-        element : <Trending/>
-     },
+   {
+      path : "/movie" ,
+      element : <Movies/>,
+    
+   },
 
-     {
-        path : "/tv" ,
-        element : <Trending/>
-     },
+   {
+      path : "/tv" ,
+      element : <TvShows/>,
+    
+   },
 
-     {
-        path : "/person" ,
-        element : <Trending/>
-     },
+   {
+      path : "/person" ,
+      element : <People/>,
+    
+   },
+
+
   ])
 
   return (

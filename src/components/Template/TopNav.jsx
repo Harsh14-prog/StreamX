@@ -25,14 +25,14 @@ const TopNav = () => {
    } , [query])
 
    return (
-      <div className='z-100 w-[80%] h-[10vh] relative flex items-center mx-auto'>
+      <div className='z-100 w-[80%] h-[10vh] relative flex items-center mx-auto '>
 
          <i className="ri-search-line text-3xl text-zinc-400"></i>
 
          <input 
              onChange={(event) => setquery(event.target.value)}
              value={query}
-             className='w-[50%] mx-10 text-xl p-4 outline-none border-none bg-transparent text-zinc-200 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ' 
+             className='w-[50%] mx-10 text-xl p-4 outline-none border-none bg-transparent text-zinc-200 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl ' 
              type='text' 
              placeholder='Search anything'
 />

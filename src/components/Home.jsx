@@ -56,6 +56,7 @@ const Home = () => {
         <div className='flex justify-between p-3 mb-4'>
           <h1 className='text-zinc-300 font-bold text-3xl'>Trending</h1>
           <Dropdown 
+            className="max-w-[200px]"
             title="Filter" 
             options={["tv", "movie", "all"]} 
             func={(ele) => setCategory(ele.target.value)} 
