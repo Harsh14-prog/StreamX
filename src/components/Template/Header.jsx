@@ -14,7 +14,7 @@ const Header = ({data}) => {
         } className=' w-full h-[65vh] text-white flex flex-col justify-end p-[6%]'>
 
             <h1 className='w-[70%] text-5xl font-black drop-shadow-md'>{data.name || data.original_name || data.original_title || data.title}</h1>
-            <p className='w-[70%] mb-3 mt-3'>{data.overview.slice(0-200)}... <Link className='text-blue-400'>more</Link></p>
+            <p className='w-[70%] mb-3 mt-3'>{data.overview.slice(0,200)}... <Link className='text-blue-400'>more</Link></p>
 
             <div className=''>
                 <i className='ri-megaphone-fill text-yellow-500 drop-shadow-md'></i> {data.release_date || "No Information"}

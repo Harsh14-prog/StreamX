@@ -1,66 +1,53 @@
 import React, { useEffect, useState } from "react";
-import TopNav from "./Template/TopNav";
 import axios from "../Utils/Axios";
-import Loading from "./Loading";
+import InfiniteScroll from "react-infinite-scroll-component";
 import VerticalCard from "./Template/VerticalCard";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
 
 const People = () => {
   const [people, setPeople] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-
   const navigate = useNavigate();
 
   const getPeople = async () => {
-    try {
-      const { data } = await axios.get(`/person/popular?page=${page}`);
-
-      if (data.results.length > 0) {
-        setPeople((prevData) => [...prevData, ...data.results]);
-        setPage((prevPage) => prevPage + 1);
-      } else {
-        setHasMore(false);
-      }
-    } catch (error) {
-      console.log("Error fetching people:", error);
+    const { data } = await axios.get(`/person/popular?page=${page}`);
+    if (data.results.length > 0) {
+      setPeople((prev) => [...prev, ...data.results]);
+      setPage((prev) => prev + 1);
+    } else {
+      setHasMore(false);
     }
   };
 
-  const refreshHandler = () => {
-    setPage(1);
-    setPeople([]);
-    setHasMore(true);
-    getPeople();
-  };
-
   useEffect(() => {
-    refreshHandler();
+    getPeople();
   }, []);
 
   return people.length > 0 ? (
-    <div className='h-screen w-full'>
-      <div className='flex items-center justify-between px-[5%]'>
-        <h1 className='text-2xl text-zinc-400 font-semibold'>
-          <i onClick={() => navigate(-1)} className="ri-arrow-left-line hover:text-[#6556CD] cursor-pointer"></i>
-           People
+    <>
+      <div className="w-full px-10 flex items-center mb-4">
+        <h1 className="text-2xl text-zinc-400 font-semibold flex items-center gap-3">
+          <i
+            onClick={() => navigate(-1)}
+            className="ri-arrow-left-line hover:text-[#6556CD] cursor-pointer text-2xl"
+          ></i>
+          Popular People
         </h1>
-        <div className='flex-grow'>
-          <TopNav/>
-        </div>
       </div>
 
       <InfiniteScroll
         dataLength={people.length}
         next={getPeople}
         hasMore={hasMore}
+        loader={<Loading />}
       >
-        <VerticalCard data={people}/>
+        <VerticalCard data={people} title="person" />
       </InfiniteScroll>
-    </div>
+    </>
   ) : (
-    <Loading/>
+    <Loading />
   );
 };
 

@@ -68,7 +68,7 @@ const TvShows = () => {
         next={getTvShows}
         hasMore={hasMore}
       >
-        <VerticalCard data={tvShows}/>
+        <VerticalCard data={tvShows} title = "tv"/>
       </InfiniteScroll>
     </div>
   ) : (

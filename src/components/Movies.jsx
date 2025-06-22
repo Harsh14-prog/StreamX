@@ -5,7 +5,7 @@ import axios from "../Utils/Axios";
 import Loading from "./Loading";
 import VerticalCard from "./Template/VerticalCard";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Movies = () => {
   const [category, setCategory] = useState("popular");
@@ -68,8 +68,9 @@ const Movies = () => {
         next={getMovies}
         hasMore={hasMore}
       >
-        <VerticalCard data={movies}/>
+        <VerticalCard data={movies} title="movie"/>
       </InfiniteScroll>
+      
     </div>
   ) : (
     <Loading/>
